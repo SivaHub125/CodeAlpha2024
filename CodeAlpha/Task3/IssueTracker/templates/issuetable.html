@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Issue Table</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <div class-"container-fluid">
+            <div class="col-md-offset-1 col-md-4">
+                <form action="addData" method="POST" autocomplete="off">
+                    {% csrf_token %}                
+                <h3 class="page-header text-primary text-center">Issue Registration</h3>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Issue_ID</label>
+                    <input type="text" class="form-control" name="issue_id">
+                </div>
+                <div class="form-group">
+                    <label>Issue</label>
+                    <input type="text" class="form-control" name="issue">
+                </div>
+                <div class="form-group">
+                    <label>Contact</label>
+                    <input type="text" class="form-control" name="contact">
+                </div>
+                <div class="form-group">
+                    <label>Mail</label>
+                    <input type="text" class="form-control" name="mail">
+                </div>
+                <div class="form-group pull-right">
+                    <input type="submit" value="Register" class="btn btn-primary">
+                    <input type="reset" value="Clear" class="btn btn-danger">
+                </div>
+            </form>
+            <li><center><b><a href="/home">HOME</a></b></center></li>
+            </div>
+        </div>
+        <div class="col-md-6">
+            {% if datas %}
+            <h3 class="page-header text-primary text-center">Views Details</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Issue_ID</th>
+                        <th>Issue</th>
+                        <th>Contact</th>
+                        <th>Mail</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                    {% for data in datas %}
+                    <tbody>
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{data.Name}}</td>
+                            <td>{{data.Issue_ID}}</td>
+                            <td>{{data.Issue}}</td>
+                            <td>{{data.Contact}}</td>
+                            <td>{{data.Mail}}</td>
+                            <td><a class="btn btn-success" href="updateData/{{data.id}}">UPDATE</a></td>
+                            <td><a class="btn btn-danger" href="deleteData/{{data.id}}">Delete</a></td>
+
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </body>
+</html>

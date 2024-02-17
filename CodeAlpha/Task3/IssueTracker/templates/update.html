@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Register</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <div class-"container-fluid">
+            <div class="col-md-offset-3 col-md-4">
+                <form action="/updateData/{{data.id}}" method="POST" autocomplete="off">
+                    {% csrf_token %}                
+                <h3 class="page-header text-primary text-center">Issue Update</h3>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" value="{{data.Name}}" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Issue_ID</label>
+                    <input type="text" class="form-control" value="{{data.Issue_ID}}" name="issue_id">
+                </div>
+                <div class="form-group">
+                    <label>Issue</label>
+                    <input type="text" class="form-control" value="{{data.Issue}}" name="issue">
+                </div>
+                <div class="form-group">
+                    <label>Contact</label>
+                    <input type="text" class="form-control" value="{{data.Contact}}" name="contact">
+                </div>
+                <div class="form-group">
+                    <label>Mail</label>
+                    <input type="text" class="form-control" value="{{data.Mail}}" name="mail">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-primary btn-block">
+                </div>
+            </form>
+            </div>
+        </div>
+    </body>
+</html>
